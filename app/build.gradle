@@ -34,7 +34,7 @@ android {
                 storeFile rootProject.file("app/${releaseKeystoreProps['STORE_FILE']}")
                 storePassword releaseKeystoreProps['STORE_PASSWORD']
                 keyAlias releaseKeystoreProps['KEY_ALIAS']
-                keyPassword releaseKeystoreProps['STORE_PASSWORD']
+                keyPassword releaseKeystoreProps['KEY_PASSWORD']
             }
         }
     }
