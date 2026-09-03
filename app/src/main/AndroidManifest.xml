@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- V28: لإرسال تيليجرام ورفع Google Drive -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <!-- إلزامية على أندرويد 9+ لتشغيل أي خدمة بالخلفية (Foreground Service) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- إلزامية على أندرويد 14 (API 34) تحديدًا لنوع خدمة الكاميرا -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-feature android:name="android.hardware.camera.front" android:required="true" />
+
+    <!-- إلزامي من أندرويد 11 (API 30) فما فوق: بدون هذا البلوك، أي استعلام
+         عن التطبيقات المثبتة الثانية (queryIntentActivities/getInstalledApplications)
+         يرجع قائمة فاضية دائمًا بدون أي خطأ ظاهر، لأن النظام يخفي تفاصيل
+         التطبيقات الأخرى افتراضيًا لأسباب خصوصية. هذا التصريح لا يطلب أي
+         صلاحية من المستخدم، فقط يوضح نيّة التطبيق للنظام مسبقًا. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <!-- ===== صلاحيات ميزة قفل التطبيقات (V10) ===== -->
+    <!-- الظهور فوق التطبيقات الأخرى - لعرض شاشة القفل العائمة -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- معرفة أي تطبيق حاليًا بالمقدمة - تُمنح يدويًا من إعدادات النظام -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- نوع خدمة أمامية "استخدام خاص" إلزامي لأندرويد 14+ لخدمة المراقبة -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!-- البصمة/الوجه كخيار فتح بديل عن PIN -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
+    <!-- ===== صلاحيات إضافية لضمان عمل القفل في الخلفية دائمًا (V12) ===== -->
+    <!-- استثناء التطبيق من تحسين البطارية حتى لا يوقف النظام خدمة المراقبة -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- إعادة تشغيل خدمة المراقبة تلقائيًا بعد إعادة تشغيل الجهاز -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:name=".IntruderCatcherApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.IntruderCatcher"
+        android:supportsRtl="true">
+
+        <!-- شاشة البداية: طلب الصلاحيات -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- شاشة عرض الصور الملتقطة -->
+        <activity android:name=".GalleryActivity" android:exported="false" />
+
+        <!-- شاشة سلة المحذوفات -->
+        <activity android:name=".TrashActivity" android:exported="false" />
+
+        <!-- شاشة عرض الصورة بحجم كامل مع التنقل بالتمرير -->
+        <activity android:name=".PhotoViewerActivity" android:exported="false" />
+
+        <!-- ===== مكونات ميزة قفل التطبيقات (V10) ===== -->
+        <activity android:name=".AppSelectionActivity" android:exported="false" />
+        <activity android:name=".SetPinActivity" android:exported="false" />
+        <activity android:name=".SetPatternActivity" android:exported="false" />
+        <!-- V15: قفل IntruderCatcher نفسه - excludeFromRecents حتى ما يظهرش محتوى غير مفتوح بمعاينة التطبيقات الأخيرة -->
+        <activity
+            android:name=".SelfLockActivity"
+            android:exported="false"
+            android:excludeFromRecents="true" />
+        <!-- V15: سجل محاولات الفتح -->
+        <activity android:name=".AttemptLogActivity" android:exported="false" />
+        <!-- V15: اختيار لون/مظهر التطبيق -->
+        <activity android:name=".ThemeActivity" android:exported="false" />
+        <!-- V28: إعدادات النسخ الاحتياطي (تيليجرام + Google Drive) -->
+        <activity android:name=".BackupSettingsActivity" android:exported="false" />
+        <!-- شفافة بالكامل، بدون شريط عنوان، لاستضافة BiometricPrompt فقط -->
+        <activity
+            android:name=".BiometricUnlockActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppLock.Transparent"
+            android:excludeFromRecents="true" />
+
+        <service
+            android:name=".AppLockMonitorService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="app_lock_foreground_monitor" />
+        </service>
+
+        <!-- مزوّد ملفات آمن للمشاركة (share) - إلزامي على أندرويد 7+
+             بدل تمرير مسارات file:// مباشرة (ممنوعة أمنيًا) -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- خدمة الالتقاط بالخلفية، بنوع "camera" إلزامي لأندرويد 14+ -->
+        <service
+            android:name=".CaptureService"
+            android:exported="false"
+            android:foregroundServiceType="camera" />
+
+        <!-- V12: يعيد تشغيل خدمة قفل التطبيقات تلقائيًا بعد إعادة تشغيل الجهاز -->
+        <receiver
+            android:name=".BootCompletedReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- مستقبل مدير الجهاز: هنا يتم رصد فشل PIN/النمط -->
+        <receiver
+            android:name=".LockAdminReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_policies" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data android:name="developer" android:value="Engineer/Sabri" />
+
+    </application>
+</manifest>

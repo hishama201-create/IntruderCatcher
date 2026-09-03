@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/photoViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- شريط علوي شفاف: زر إغلاق + عدّاد الصور -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#991D1440"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:contentDescription="إغلاق" />
+
+        <TextView
+            android:id="@+id/tvPageCounter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="1 / 1" />
+
+        <TextView
+            android:id="@+id/tvPhotoTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#B8ADD9"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/themeRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:id="@+id/themeToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:id="@+id/btnThemeBack"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/bg_icon_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_arrow_back" />
+
+            <TextView
+                android:id="@+id/tvThemeTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/theme_title"
+                android:textColor="#FFFFFF"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvThemePresetsLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/theme_presets_title"
+            android:textColor="#B8ADD9"
+            android:textSize="14sp"
+            android:layout_marginBottom="10dp" />
+
+        <GridLayout
+            android:id="@+id/presetsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="5"
+            android:layout_marginBottom="8dp" />
+
+        <!-- V26: قسم اللون المخصّص - معاينة حية + ٣ منزلقات RGB -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@string/theme_custom_title"
+            android:textColor="#B8ADD9"
+            android:textSize="14sp"
+            android:layout_marginBottom="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <View
+                android:id="@+id/customColorPreview"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="16dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/theme_custom_red"
+                    android:textColor="#B8ADD9"
+                    android:textSize="11sp" />
+
+                <SeekBar
+                    android:id="@+id/seekRed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="255" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/theme_custom_green"
+                    android:textColor="#B8ADD9"
+                    android:textSize="11sp" />
+
+                <SeekBar
+                    android:id="@+id/seekGreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="255" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/theme_custom_blue"
+                    android:textColor="#B8ADD9"
+                    android:textSize="11sp" />
+
+                <SeekBar
+                    android:id="@+id/seekBlue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="255" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnApplyCustomColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/theme_custom_apply"
+            android:backgroundTint="#6C3CE9"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/theme_note"
+            android:textColor="#8A7FA8"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>

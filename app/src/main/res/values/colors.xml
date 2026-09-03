@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="navy_deep">#0B0A1F</color>
+    <color name="navy_card">#1D1440</color>
+    <color name="purple_primary">#6C3CE9</color>
+    <color name="purple_light">#9C6BFF</color>
+    <color name="text_secondary">#B8ADD9</color>
+    <color name="danger_red">#F44336</color>
+    <color name="success_green">#4CAF50</color>
+    <color name="warning_amber">#FFB74D</color>
+</resources>

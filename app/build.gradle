@@ -1,0 +1,105 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+// تحميل بيانات توقيع الـ release من ملف خارج المشروع (غير موجود في Git)
+// حتى لا تُنشر كلمات المرور في المستودع
+def releaseKeystoreProps = new Properties()
+def releaseKeystorePropsFile = rootProject.file('app/keystore-release/keystore.properties')
+def hasReleaseKeystore = releaseKeystorePropsFile.exists()
+if (hasReleaseKeystore) {
+    releaseKeystoreProps.load(new FileInputStream(releaseKeystorePropsFile))
+}
+
+android {
+    namespace 'com.sabri.intrudercatcher'
+    // compileSdk/targetSdk 35 = Android 15 (أحدث إصدار مستقر)
+    compileSdk 35
+
+    // مفتاح توقيع ثابت داخل المشروع - بدونه، كل بناء جديد (خصوصًا على
+    // GitHub Actions، اللي يبدأ ببيئة فارغة كل مرة) يولّد مفتاحًا عشوائيًا
+    // مختلف، فيرفض أندرويد تثبيت التحديث فوق النسخة القديمة
+    // ("حزمة التثبيت تتعارض مع حزمة حالية"). هذا المفتاح يضمن نفس التوقيع
+    // بكل نسخة، فتقدر دائمًا تحدّث فوق التطبيق القديم مباشرة.
+    signingConfigs {
+        debug {
+            storeFile file('keystore/debug.keystore')
+            storePassword 'android123'
+            keyAlias 'intrudercatcher'
+            keyPassword 'android123'
+        }
+        if (hasReleaseKeystore) {
+            release {
+                storeFile rootProject.file("app/${releaseKeystoreProps['STORE_FILE']}")
+                storePassword releaseKeystoreProps['STORE_PASSWORD']
+                keyAlias releaseKeystoreProps['KEY_ALIAS']
+                keyPassword releaseKeystoreProps['STORE_PASSWORD']
+            }
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.sabri.intrudercatcher"
+        // minSdk 24 = Android 7.0 (Nougat) — حسب طلبك: يغطي من أندرويد 7 إلى 15
+        minSdk 24
+        targetSdk 35
+        // عند كل تعديل جديد على المشروع، زد versionCode بمقدار 1 وحدّث
+        // versionName بنفس الرقم (V8, V9 ...)
+        versionCode 28
+        versionName "V28"
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (hasReleaseKeystore) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    // لتصفح الصور بالتمرير يمين/يسار في شاشة العرض الكامل
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+    // CameraX لالتقاط صور من الكاميرا الأمامية بالخلفية بدون معاينة
+    def camerax_version = "1.3.1"
+    implementation "androidx.camera:camera-core:${camerax_version}"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+    // V28: تسجيل فيديو قصير بدل صورة واحدة
+    implementation "androidx.camera:camera-video:${camerax_version}"
+
+    // ===== ميزة قفل التطبيقات (V10) =====
+    // تخزين مشفّر (AES-256) لرمز الـ PIN وقائمة التطبيقات المقفولة
+    implementation "androidx.security:security-crypto:1.1.0-alpha06"
+    // نافذة النظام الرسمية لمصادقة البصمة/الوجه
+    implementation "androidx.biometric:biometric:1.1.0"
+
+    // V28: تسجيل دخول Google لربط ورفع نسخة احتياطية مشفّرة على Google Drive
+    implementation "com.google.android.gms:play-services-auth:20.7.0"
+}

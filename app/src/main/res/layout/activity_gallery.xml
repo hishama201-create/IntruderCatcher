@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0B0A1F">
+
+    <!-- شريط الوضع العادي -->
+    <LinearLayout
+        android:id="@+id/toolbarNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#1D1440"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="الصور الملتقطة"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnOpenTrash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="سلة المحذوفات"
+            android:textColor="#9C6BFF"
+            android:padding="8dp" />
+
+    </LinearLayout>
+
+    <!-- شريط وضع التحديد المتعدد -->
+    <LinearLayout
+        android:id="@+id/toolbarSelection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#3A2E7A"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvSelectedCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0 محدد"
+            android:textColor="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/btnShare"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="20dp"
+            android:src="@android:drawable/ic_menu_share"
+            android:contentDescription="مشاركة" />
+
+        <ImageView
+            android:id="@+id/btnCopy"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="20dp"
+            android:src="@android:drawable/ic_menu_save"
+            android:contentDescription="نسخ" />
+
+        <ImageView
+            android:id="@+id/btnDelete"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:contentDescription="حذف" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPhotos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="لا توجد صور بعد"
+        android:textColor="#888888"
+        android:gravity="center"
+        android:padding="32dp"
+        android:visibility="gone" />
+
+</LinearLayout>

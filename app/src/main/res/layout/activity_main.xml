@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <!-- V25: المحتوى الرئيسي - الأيقونة + الحالة + الأزرار -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <ImageView
+            android:id="@+id/ivAppIcon"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/ic_launcher_fingerprint"
+            android:layout_marginBottom="36dp" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/status_not_ready"
+            android:textColor="#CCCCCC"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginBottom="32dp" />
+
+        <!-- V25: حواف دائرية + تدرّج لوني + أيقونة إيموجي + ظل خفيف لكل زر -->
+        <Button
+            android:id="@+id/btnGrantCamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grant_camera"
+            android:background="@drawable/bg_button_gradient"
+            android:textColor="#FFFFFF"
+            android:elevation="6dp"
+            android:stateListAnimator="@null"
+            android:layout_marginBottom="14dp" />
+
+        <Button
+            android:id="@+id/btnGrantAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grant_admin"
+            android:background="@drawable/bg_button_gradient"
+            android:textColor="#FFFFFF"
+            android:elevation="6dp"
+            android:stateListAnimator="@null"
+            android:layout_marginBottom="14dp" />
+
+        <Button
+            android:id="@+id/btnViewGallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/view_gallery"
+            android:background="@drawable/bg_button_gradient"
+            android:textColor="#FFFFFF"
+            android:elevation="6dp"
+            android:stateListAnimator="@null"
+            android:layout_marginBottom="14dp" />
+
+        <Button
+            android:id="@+id/btnAppLock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/applock_open_feature"
+            android:background="@drawable/bg_button_gradient"
+            android:textColor="#FFFFFF"
+            android:elevation="6dp"
+            android:stateListAnimator="@null"
+            android:layout_marginBottom="14dp" />
+
+        <!-- V28: النسخ الاحتياطي التلقائي (فيديو + تيليجرام + Google Drive) -->
+        <Button
+            android:id="@+id/btnBackupSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/backup_settings_title"
+            android:background="@drawable/bg_button_gradient"
+            android:textColor="#FFFFFF"
+            android:elevation="6dp"
+            android:stateListAnimator="@null" />
+
+    </LinearLayout>
+
+    <!-- V26: التوقيع - نقلناه للجهة المقابلة (يسار) بطلبك، بسطرين -->
+    <TextView
+        android:id="@+id/tvDeveloperSignature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:text="@string/main_developer_signature"
+        android:textColor="#66B8ADD9"
+        android:textSize="11sp"
+        android:textStyle="italic" />
+
+</RelativeLayout>

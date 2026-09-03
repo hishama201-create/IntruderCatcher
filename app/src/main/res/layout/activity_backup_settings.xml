@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/backup_settings_title"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- ===== قسم تيليجرام ===== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/telegram_section_title"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/telegram_section_desc"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/etBotToken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/telegram_bot_token_hint"
+            android:textColorHint="#777777"
+            android:textColor="#FFFFFF"
+            android:inputType="text"
+            android:background="@drawable/bg_icon_button"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
+
+        <EditText
+            android:id="@+id/etChatId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/telegram_chat_id_hint"
+            android:textColorHint="#777777"
+            android:textColor="#FFFFFF"
+            android:inputType="text"
+            android:background="@drawable/bg_icon_button"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/telegram_enable_switch"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <Switch
+                android:id="@+id/switchTelegram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#333333"
+            android:layout_marginBottom="20dp" />
+
+        <!-- ===== قسم Google Drive ===== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/drive_section_title"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/drive_section_desc"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            android:layout_marginBottom="14dp" />
+
+        <TextView
+            android:id="@+id/tvDriveAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/drive_not_linked"
+            android:textColor="#B8ADD9"
+            android:textSize="13sp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnLinkDrive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/drive_link_button"
+            android:background="@drawable/bg_button_gradient"
+            android:textColor="#FFFFFF"
+            android:elevation="6dp"
+            android:stateListAnimator="@null"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/drive_enable_switch"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <Switch
+                android:id="@+id/switchDrive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:background="@drawable/bg_button_gradient"
+            android:textColor="#FFFFFF"
+            android:elevation="6dp"
+            android:stateListAnimator="@null" />
+
+    </LinearLayout>
+</ScrollView>

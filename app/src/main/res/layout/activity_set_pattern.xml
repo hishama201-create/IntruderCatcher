@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="#0B0A1F">
+
+    <TextView
+        android:id="@+id/tvSetPatternTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvSetPatternError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/applock_pattern_mismatch"
+        android:textColor="#F44336"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:layout_marginBottom="12dp" />
+
+    <com.sabri.intrudercatcher.PatternLockView
+        android:id="@+id/patternLockView"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_marginBottom="8dp" />
+
+</LinearLayout>

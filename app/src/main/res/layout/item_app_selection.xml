@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="64dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="#15123A"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/ivLockToggle"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/bg_icon_button"
+        android:contentDescription="@string/applock_choose_lock_method_title"
+        android:padding="4dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_lock_open" />
+
+    <ImageView
+        android:id="@+id/ivAppSettings"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="14dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/bg_icon_button"
+        android:contentDescription="@string/applock_relock_settings_title"
+        android:padding="3dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_settings_gear" />
+
+    <ImageView
+        android:id="@+id/ivAppIcon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="14dp" />
+
+    <TextView
+        android:id="@+id/tvAppLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+</LinearLayout>

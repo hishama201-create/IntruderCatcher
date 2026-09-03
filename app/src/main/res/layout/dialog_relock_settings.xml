@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#1D1440"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/applock_relock_settings_title"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <RadioGroup
+        android:id="@+id/radioRelockMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioImmediate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/applock_relock_immediate"
+            android:textColor="#FFFFFF"
+            android:buttonTint="#9C6BFF"
+            android:padding="8dp" />
+
+        <RadioButton
+            android:id="@+id/radioScreenOff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/applock_relock_screen_off"
+            android:textColor="#FFFFFF"
+            android:buttonTint="#9C6BFF"
+            android:padding="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <RadioButton
+                android:id="@+id/radioAfterMinutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/applock_relock_after"
+                android:textColor="#FFFFFF"
+                android:buttonTint="#9C6BFF"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/tvMinutesValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:minWidth="24dp"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/applock_relock_minutes_unit"
+                android:textColor="#B8ADD9"
+                android:layout_marginEnd="8dp" />
+
+            <SeekBar
+                android:id="@+id/seekMinutes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="59"
+                android:progressTint="#9C6BFF"
+                android:thumbTint="#9C6BFF" />
+
+        </LinearLayout>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btnRelockOk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/applock_ok"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#9C6BFF" />
+
+        <Button
+            android:id="@+id/btnRelockCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/applock_cancel"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#332D1F5C" />
+
+    </LinearLayout>
+
+</LinearLayout>

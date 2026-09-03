@@ -1,0 +1,13 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.4'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.20'
+    }
+}
+// ملاحظة: مستودعات المشروع (google/mavenCentral) معرّفة مركزيًا داخل
+// settings.gradle عبر dependencyResolutionManagement، فلا نكررها هنا -
+// وجودها بالملفين معًا يوقف البناء تمامًا (FAIL_ON_PROJECT_REPOS)

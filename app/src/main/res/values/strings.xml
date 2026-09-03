@@ -1,0 +1,157 @@
+<resources>
+    <string name="app_name">App Lock</string>
+    <string name="main_developer_signature">App Lock\nالمطور/H الصبري</string>
+    <string name="status_not_ready">فعّل الصلاحيتين أدناه ليعمل التطبيق</string>
+    <string name="status_ready">جاهز — التطبيق يراقب الآن محاولات فتح القفل الخاطئة</string>
+    <string name="grant_camera">📷 1. منح صلاحية الكاميرا</string>
+    <string name="grant_admin">🛡️ 2. تفعيل مدير الجهاز</string>
+    <string name="view_gallery">🖼️ عرض الصور الملتقطة</string>
+    <string name="notification_channel_name">مراقبة القفل نشطة</string>
+
+    <!-- ميزة قفل التطبيقات -->
+    <string name="applock_open_feature">🔒 الانتقال إلى قفل التطبيقات</string>
+    <string name="applock_select_apps_title">اختر التطبيقات المراد قفلها</string>
+    <string name="applock_select_apps_subtitle">فعّل المفتاح بجانب أي تطبيق حتى يطلب PIN أو بصمة عند فتحه</string>
+    <string name="applock_enter_new_pin">أدخل رمز PIN جديد (٤ أرقام على الأقل)</string>
+    <string name="applock_confirm_pin">أعد إدخال نفس الرمز للتأكيد</string>
+    <string name="applock_pin_too_short">الرمز لازم يكون ٤ أرقام على الأقل</string>
+    <string name="applock_pin_saved">تم حفظ الرمز بنجاح</string>
+    <string name="applock_pin_mismatch">الرمزين غير متطابقين، حاول من جديد</string>
+    <string name="applock_continue">متابعة</string>
+    <string name="applock_grant_usage_access_hint">فعّل صلاحية "الوصول لبيانات الاستخدام" لتطبيق App Lock من الشاشة القادمة</string>
+    <string name="applock_grant_overlay_hint">فعّل صلاحية "الظهور فوق التطبيقات الأخرى" لتطبيق App Lock من الشاشة القادمة</string>
+    <string name="applock_notification_channel">مراقبة قفل التطبيقات</string>
+    <string name="applock_notification_title">قفل التطبيقات نشط</string>
+    <string name="applock_locked_app_label">%1$s مقفول</string>
+    <string name="applock_wrong_pin">رمز خاطئ، حاول مرة أخرى</string>
+    <string name="applock_use_biometric">استخدم البصمة بدلًا من ذلك</string>
+    <string name="applock_biometric_title">تحقق من هويتك لفتح التطبيق</string>
+    <string name="applock_biometric_cancel">إلغاء</string>
+
+    <!-- نمط (Pattern) كخيار قفل ثالث -->
+    <string name="applock_type_pin">رمز PIN</string>
+    <string name="applock_type_pattern">نمط (Pattern)</string>
+    <!-- V24: بصمة الوجه والإصبع كخيارين منفصلين بالقائمة (تقنيًا أندرويد بيشغّل نفس نافذة النظام للاتنين) -->
+    <string name="applock_type_face">بصمة الوجه</string>
+    <string name="applock_type_fingerprint">بصمة الإصبع</string>
+    <string name="applock_biometric_enabled_toast">تم تفعيل الفتح بالبصمة</string>
+    <string name="applock_choose_type_title">اختر طريقة القفل</string>
+    <string name="applock_draw_new_pattern">ارسم نمط جديد (اربط ٤ نقاط على الأقل)</string>
+    <string name="applock_confirm_pattern">أعد رسم نفس النمط للتأكيد</string>
+    <string name="applock_pattern_too_short">النمط لازم يربط ٤ نقاط على الأقل</string>
+    <string name="applock_pattern_saved">تم حفظ النمط بنجاح</string>
+    <string name="applock_pattern_mismatch">النمطين غير متطابقين، حاول من جديد</string>
+    <string name="applock_use_biometric_toggle">استخدام البصمة/الوجه كخيار إضافي سريع</string>
+
+    <!-- V12: أيقونة القفل لكل تطبيق + اختيار طريقة القفل + إعدادات إعادة القفل -->
+    <string name="applock_choose_lock_method_title">اختر طريقة القفل</string>
+    <string name="applock_method_face">بصمة الوجه / الإصبع</string>
+    <string name="applock_method_pattern">نمط (Pattern)</string>
+    <string name="applock_method_pin">رمز PIN</string>
+    <string name="applock_face_not_supported">هذا الجهاز لا يدعم بصمة الوجه أو الإصبع، اختر طريقة أخرى</string>
+    <string name="applock_app_locked_toast">تم قفل %1$s</string>
+    <string name="applock_app_unlocked_toast">تم فتح قفل %1$s</string>
+
+    <string name="applock_relock_settings_title">إعادة قفل التطبيق</string>
+    <string name="applock_relock_immediate">على الفور</string>
+    <string name="applock_relock_screen_off">بعد غلق الشاشة</string>
+    <string name="applock_relock_after">بعد</string>
+    <string name="applock_relock_minutes_unit">دقيقة</string>
+    <string name="applock_ok">موافق</string>
+    <string name="applock_cancel">إلغاء</string>
+
+    <!-- V12: صلاحيات إضافية لضمان عمل القفل في الخلفية دائمًا -->
+    <string name="applock_grant_battery_hint">استثنِ App Lock من تحسين البطارية من الشاشة القادمة حتى تبقى الحماية تعمل دائمًا في الخلفية</string>
+
+    <!-- V13: تبويبين (الإعدادات / قائمة التطبيقات) + إعداد افتراضي عام -->
+    <string name="applock_tab_settings">الإعدادات</string>
+    <string name="applock_tab_apps_list">قائمة التطبيقات</string>
+    <string name="applock_default_relock_title">إعادة القفل الافتراضية</string>
+    <string name="applock_default_relock_subtitle">تُطبَّق تلقائيًا على أي تطبيق جديد تقفله، ويمكن تخصيصها لاحقًا لكل تطبيق على حدة</string>
+    <string name="applock_edit">تعديل</string>
+
+    <!-- V21: تغيير رمز القفل + حالة حماية إزالة التثبيت -->
+    <string name="applock_change_code_title">تغيير رمز/نمط القفل</string>
+    <string name="applock_uninstall_protection_title">حماية إزالة التثبيت</string>
+    <string name="applock_uninstall_protection_enable">تفعيل</string>
+    <string name="applock_uninstall_protection_active">مفعّلة ✓</string>
+    <string name="applock_uninstall_protection_inactive">غير مفعّلة</string>
+    <string name="applock_admin_enable_explanation">يستخدم هذه الصلاحية لمنع حذف التطبيق ورصد محاولات الفتح الخاطئة فقط</string>
+    <string name="applock_apps_found_debug">تم العثور على %1$d تطبيق</string>
+
+    <!-- V14: شريط بحث قابل للطي -->
+    <string name="applock_search_hint">ابحث عن تطبيق...</string>
+    <string name="applock_search_close">إغلاق البحث</string>
+    <string name="applock_search_no_results">لا توجد نتائج مطابقة</string>
+
+    <!-- V15: قفل App Lock نفسه -->
+    <string name="applock_self_lock_toggle">قفل تطبيق App Lock نفسه عند فتحه</string>
+    <string name="applock_self_lock_needs_pin">لازم تعدّ رمز PIN أو نمط أولًا من قفل التطبيقات الأخرى</string>
+
+    <!-- V15: حماية تعطيل صلاحية مدير الجهاز -->
+    <string name="admin_disable_warning">تعطيل هذه الصلاحية يوقف حماية App Lock من إزالة التثبيت، ويعطّل رصد محاولات الفتح الخاطئة. متأكد؟</string>
+    <string name="admin_disabled_nag_title">⚠️ تم تعطيل الحماية</string>
+    <string name="admin_disabled_nag_message">تم تعطيل صلاحية مدير الجهاز من خارج التطبيق. أعد تفعيلها الآن لاستعادة حماية إزالة التثبيت.</string>
+    <string name="admin_disabled_nag_reenable">إعادة التفعيل الآن</string>
+
+    <!-- V15: سجل محاولات الفتح -->
+    <string name="attempt_log_title">سجل محاولات الفتح</string>
+    <string name="attempt_log_clear">مسح السجل</string>
+    <string name="attempt_log_clear_confirm">هيتم حذف كل السجل نهائيًا. متأكد؟</string>
+    <string name="attempt_log_empty">لا توجد أي محاولات فتح مسجّلة بعد</string>
+    <string name="attempt_log_success">نجحت</string>
+    <string name="attempt_log_failed">فشلت</string>
+    <string name="attempt_log_admin_disabled">تعطيل الحماية</string>
+
+    <!-- V15: تخصيص المظهر -->
+    <string name="theme_title">المظهر والألوان</string>
+    <string name="theme_presets_title">ألوان رسمية جاهزة</string>
+    <string name="theme_applied_toast">تم تطبيق المظهر</string>
+    <string name="theme_note">اضغط على أي لون ليُطبَّق فورًا</string>
+    <string name="theme_preset_purple">بنفسجي (افتراضي)</string>
+    <string name="theme_preset_blue">أزرق</string>
+    <string name="theme_preset_green">أخضر</string>
+    <string name="theme_preset_red">أحمر</string>
+    <string name="theme_preset_graphite">رمادي احترافي</string>
+    <string name="theme_preset_teal">تركواز</string>
+    <string name="theme_preset_orange">برتقالي</string>
+    <string name="theme_preset_pink">وردي</string>
+    <string name="theme_preset_indigo">نيلي</string>
+    <string name="theme_preset_yellow">أصفر ذهبي</string>
+    <!-- V26: خمسة ألوان إضافية ثانية -->
+    <string name="theme_preset_brown">بني</string>
+    <string name="theme_preset_steel">أزرق فولاذي</string>
+    <string name="theme_preset_magenta">أرجواني</string>
+    <string name="theme_preset_lime">أخضر ليموني</string>
+    <string name="theme_preset_navy">كحلي</string>
+
+    <!-- V26: قسم اللون المخصّص (منزلقات RGB) -->
+    <string name="theme_custom_title">لون مخصّص</string>
+    <string name="theme_custom_red">أحمر (R)</string>
+    <string name="theme_custom_green">أخضر (G)</string>
+    <string name="theme_custom_blue">أزرق (B)</string>
+    <string name="theme_custom_apply">تطبيق اللون المخصّص</string>
+
+    <!-- ===== V28: النسخ الاحتياطي التلقائي (فيديو + تيليجرام + Drive) ===== -->
+    <string name="backup_settings_title">النسخ الاحتياطي التلقائي</string>
+    <string name="telegram_section_title">إرسال فوري عبر تيليجرام</string>
+    <string name="telegram_section_desc">يرسل الفيديو تلقائيًا لبوت تيليجرام خاص بك فور التقاطه - يوصلك حتى لو حُذف التطبيق بعدها. أنشئ بوت عبر @BotFather واحصل على التوكن، واحصل على Chat ID عبر @userinfobot</string>
+    <string name="telegram_bot_token_hint">توكن البوت (Bot Token)</string>
+    <string name="telegram_chat_id_hint">معرّف المحادثة (Chat ID)</string>
+    <string name="telegram_enable_switch">تفعيل الإرسال التلقائي</string>
+    <string name="telegram_caption">🚨 محاولة فتح فاشلة - %1$s</string>
+    <string name="telegram_missing_fields">أدخل توكن البوت ومعرّف المحادثة أولًا</string>
+    <string name="drive_section_title">نسخة احتياطية مشفّرة على Google Drive</string>
+    <string name="drive_section_desc">يشفّر كل فيديو بمفتاح داخل الجهاز قبل رفعه لمجلد خاص بالتطبيق فقط على Drive - لا يرى ولا يصل لأي ملف آخر بحسابك</string>
+    <string name="drive_not_linked">لا يوجد حساب مربوط حاليًا</string>
+    <string name="drive_linked_as">مربوط بحساب: %1$s</string>
+    <string name="drive_link_button">ربط حساب Google Drive</string>
+    <string name="drive_unlink_button">فصل الحساب</string>
+    <string name="drive_enable_switch">تفعيل الرفع التلقائي</string>
+    <string name="drive_linked_success">تم الربط بنجاح: %1$s</string>
+    <string name="drive_link_failed">فشل الربط: %1$s</string>
+    <string name="drive_unlinked">تم فصل حساب Drive</string>
+    <string name="drive_must_link_first">اربط حساب Drive أولًا قبل التفعيل</string>
+    <string name="save">حفظ</string>
+    <string name="settings_saved">تم الحفظ</string>
+</resources>

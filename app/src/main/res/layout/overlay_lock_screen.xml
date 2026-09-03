@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#F20B0A1F"
+    android:padding="32dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_launcher_fingerprint"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvOverlayAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:id="@+id/tvOverlayError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/applock_wrong_pin"
+        android:textColor="#F44336"
+        android:textSize="13sp"
+        android:visibility="invisible"
+        android:layout_marginBottom="12dp" />
+
+    <!-- مجموعة PIN: تظهر فقط لو نوع القفل الفعّال هو PIN -->
+    <LinearLayout
+        android:id="@+id/groupPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- مؤشر نقاط الـ PIN -->
+        <LinearLayout
+            android:id="@+id/pinDotsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp" />
+
+        <!-- لوحة أرقام PIN بسيطة 3x4 -->
+        <GridLayout
+            android:id="@+id/pinKeypad"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="4" />
+
+    </LinearLayout>
+
+    <!-- مجموعة النمط: تظهر فقط لو نوع القفل الفعّال هو نمط -->
+    <LinearLayout
+        android:id="@+id/groupPattern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <com.sabri.intrudercatcher.PatternLockView
+            android:id="@+id/patternLockView"
+            android:layout_width="260dp"
+            android:layout_height="260dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnOverlayBiometric"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/applock_use_biometric"
+        android:textColor="#9C6BFF"
+        android:textSize="14sp"
+        android:padding="16dp"
+        android:visibility="gone" />
+
+</LinearLayout>

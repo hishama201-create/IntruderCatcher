@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/selfLockRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="#0B0A1F">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_launcher_fingerprint"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvSelfLockAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:id="@+id/tvSelfLockError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/applock_wrong_pin"
+        android:textColor="#F44336"
+        android:textSize="13sp"
+        android:visibility="invisible"
+        android:layout_marginBottom="12dp" />
+
+    <LinearLayout
+        android:id="@+id/selfLockGroupPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/selfLockPinDotsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp" />
+
+        <GridLayout
+            android:id="@+id/selfLockPinKeypad"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="4" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/selfLockGroupPattern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <com.sabri.intrudercatcher.PatternLockView
+            android:id="@+id/selfLockPatternView"
+            android:layout_width="260dp"
+            android:layout_height="260dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnSelfLockBiometric"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/applock_use_biometric"
+        android:textColor="#9C6BFF"
+        android:textSize="14sp"
+        android:padding="16dp"
+        android:visibility="gone" />
+
+</LinearLayout>
