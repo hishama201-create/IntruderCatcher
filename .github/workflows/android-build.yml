@@ -29,11 +29,29 @@ jobs:
         with:
           gradle-version: '8.5'
 
-      - name: Build debug APK
-        run: gradle assembleDebug --stacktrace
+      - name: Prepare release keystore
+        run: |
+          mkdir -p app/keystore-release
+          echo "${{ secrets.RELEASE_KEYSTORE_BASE64 }}" | base64 -d > app/keystore-release/release.keystore
+          cat > app/keystore-release/keystore.properties << PROPS
+          STORE_FILE=keystore-release/release.keystore
+          STORE_PASSWORD=${{ secrets.RELEASE_STORE_PASSWORD }}
+          KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}
+          KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}
+          PROPS
+
+      - name: Print release SHA-1 fingerprint
+        run: |
+          keytool -list -v \
+            -keystore app/keystore-release/release.keystore \
+            -alias "${{ secrets.RELEASE_KEY_ALIAS }}" \
+            -storepass "${{ secrets.RELEASE_STORE_PASSWORD }}" | grep "SHA1:"
+
+      - name: Build release APK
+        run: gradle assembleRelease --stacktrace
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: IntruderCatcher-debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          name: IntruderCatcher-release-apk
+          path: app/build/outputs/apk/release/*.apk
