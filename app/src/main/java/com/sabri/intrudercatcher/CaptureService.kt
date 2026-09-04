@@ -160,7 +160,7 @@ class CaptureService : Service() {
         private const val TAG = "CaptureService"
         private const val CHANNEL_ID = "detector_service_channel"
         private const val NOTIFICATION_ID = 101
-        private const val RECORDING_DURATION_MS = 4000L
+        private const val RECORDING_DURATION_MS = 8000L
 
         fun enqueueCapture(context: Context) {
             val intent = Intent(context, CaptureService::class.java)
