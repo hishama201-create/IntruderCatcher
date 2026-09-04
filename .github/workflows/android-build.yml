@@ -29,33 +29,6 @@ jobs:
         with:
           gradle-version: '8.5'
 
-      - name: Prepare release keystore
-        env:
-          RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
-          RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
-          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
-        run: |
-          mkdir -p app/keystore-release
-          printf '%s' "$RELEASE_KEYSTORE_BASE64" | base64 -d > app/keystore-release/release.keystore
-          {
-            echo "STORE_FILE=keystore-release/release.keystore"
-            echo "STORE_PASSWORD=$RELEASE_STORE_PASSWORD"
-            echo "KEY_ALIAS=$RELEASE_KEY_ALIAS"
-            echo "KEY_PASSWORD=$RELEASE_STORE_PASSWORD"
-          } > app/keystore-release/keystore.properties
-          echo "بصمة الملف المستلم (sha256):"
-          sha256sum app/keystore-release/release.keystore
-
-      - name: Verify release keystore is valid
-        env:
-          RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
-          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
-        run: |
-          keytool -list -v \
-            -keystore app/keystore-release/release.keystore \
-            -alias "$RELEASE_KEY_ALIAS" \
-            -storepass "$RELEASE_STORE_PASSWORD"
-
       - name: Build release APK
         run: gradle assembleRelease --stacktrace
 
