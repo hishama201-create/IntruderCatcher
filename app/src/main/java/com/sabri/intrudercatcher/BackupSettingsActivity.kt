@@ -1,5 +1,8 @@
 package com.sabri.intrudercatcher
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +24,17 @@ class BackupSettingsActivity : AppCompatActivity() {
         binding.switchTelegram.isChecked = BackupPrefs.isTelegramEnabled(this)
 
         binding.btnSave.setOnClickListener { saveAndClose() }
+
+        binding.btnOpenBotFather.setOnClickListener { openTelegramUser("BotFather") }
+        binding.btnOpenUserInfoBot.setOnClickListener { openTelegramUser("userinfobot") }
+    }
+
+    private fun openTelegramUser(username: String) {
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=$username")))
+        } catch (e: ActivityNotFoundException) {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/$username")))
+        }
     }
 
     private fun saveAndClose() {
