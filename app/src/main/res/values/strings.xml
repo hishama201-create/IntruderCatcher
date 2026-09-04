@@ -154,4 +154,19 @@
     <string name="drive_must_link_first">اربط حساب Drive أولًا قبل التفعيل</string>
     <string name="save">حفظ</string>
     <string name="settings_saved">تم الحفظ</string>
+
+    <!-- ===== V40: دليل خطوة بخطوة للحصول على Bot Token و Chat ID ===== -->
+    <string name="guide_title">🤖 كيف تحصل على التوكن و Chat ID؟</string>
+    <string name="guide_step1_title">افتح تيليجرام وابحث عن BotFather</string>
+    <string name="guide_step1_desc">اكتب @BotFather في خانة البحث، افتح المحادثة الرسمية (علامة ✓ زرقاء)، أو اضغط الزر تحت ليفتح لك مباشرة</string>
+    <string name="guide_open_botfather">فتح BotFather</string>
+    <string name="guide_step2_title">أرسل الأمر /newbot</string>
+    <string name="guide_step2_desc">اكتب /newbot، اختر اسمًا لبوتك، ثم اسم مستخدم ينتهي بكلمة bot (مثل MyGuard_bot)</string>
+    <string name="guide_step3_title">انسخ التوكن (Bot Token)</string>
+    <string name="guide_step3_desc">يرسل لك BotFather رسالة فيها سطر طويل من أرقام وحروف - انسخه بالكامل والصقه بخانة توكن البوت فوق</string>
+    <string name="guide_step4_title">ابحث عن userinfobot وأرسل أي رسالة</string>
+    <string name="guide_step4_desc">افتح محادثة مع @userinfobot وأرسل له أي رسالة، سيرد عليك برقم Id - هذا هو Chat ID</string>
+    <string name="guide_open_userinfobot">فتح userinfobot</string>
+    <string name="guide_step5_title">الصق التوكن و Chat ID واحفظ</string>
+    <string name="guide_step5_desc">ارجع للخانتين فوق، الصق القيمتين، فعّل المفتاح، واضغط حفظ</string>
 </resources>
