@@ -3,13 +3,13 @@
     <string name="main_developer_signature">App Lock\nالمطور/H الصبري</string>
     <string name="status_not_ready">فعّل الصلاحيتين أدناه ليعمل التطبيق</string>
     <string name="status_ready">جاهز — التطبيق يراقب الآن محاولات فتح القفل الخاطئة</string>
-    <string name="grant_camera">📷 1. منح صلاحية الكاميرا</string>
-    <string name="grant_admin">🛡️ 2. تفعيل مدير الجهاز</string>
-    <string name="view_gallery">🖼️ عرض الصور الملتقطة</string>
+    <string name="grant_camera">منح صلاحية الكاميرا</string>
+    <string name="grant_admin">تفعيل مدير الجهاز</string>
+    <string name="view_gallery">عرض الصور الملتقطة</string>
     <string name="notification_channel_name">مراقبة القفل نشطة</string>
 
     <!-- ميزة قفل التطبيقات -->
-    <string name="applock_open_feature">🔒 الانتقال إلى قفل التطبيقات</string>
+    <string name="applock_open_feature">الانتقال إلى قفل التطبيقات</string>
     <string name="applock_select_apps_title">اختر التطبيقات المراد قفلها</string>
     <string name="applock_select_apps_subtitle">فعّل المفتاح بجانب أي تطبيق حتى يطلب PIN أو بصمة عند فتحه</string>
     <string name="applock_enter_new_pin">أدخل رمز PIN جديد (٤ أرقام على الأقل)</string>
