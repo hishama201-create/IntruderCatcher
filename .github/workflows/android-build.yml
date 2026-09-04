@@ -34,22 +34,17 @@ jobs:
           RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
           RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
           RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
-          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
         run: |
           mkdir -p app/keystore-release
-          echo "$RELEASE_KEYSTORE_BASE64" | base64 -d > app/keystore-release/release.keystore
+          printf '%s' "$RELEASE_KEYSTORE_BASE64" | base64 -d > app/keystore-release/release.keystore
           {
             echo "STORE_FILE=keystore-release/release.keystore"
             echo "STORE_PASSWORD=$RELEASE_STORE_PASSWORD"
             echo "KEY_ALIAS=$RELEASE_KEY_ALIAS"
-            echo "KEY_PASSWORD=$RELEASE_KEY_PASSWORD"
+            echo "KEY_PASSWORD=$RELEASE_STORE_PASSWORD"
           } > app/keystore-release/keystore.properties
-          echo "=== تشخيص ==="
-          echo "طول سر Base64: ${#RELEASE_KEYSTORE_BASE64} حرف"
-          echo "طول كلمة مرور Store: ${#RELEASE_STORE_PASSWORD} حرف"
-          echo "طول Alias: ${#RELEASE_KEY_ALIAS} حرف"
-          echo "حجم ملف release.keystore: $(wc -c < app/keystore-release/release.keystore) بايت"
-          file app/keystore-release/release.keystore
+          echo "بصمة الملف المستلم (sha256):"
+          sha256sum app/keystore-release/release.keystore
 
       - name: Verify release keystore is valid
         env:
