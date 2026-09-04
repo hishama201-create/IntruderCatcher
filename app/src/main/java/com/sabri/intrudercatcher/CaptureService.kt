@@ -140,7 +140,6 @@ class CaptureService : Service() {
             SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
         )
         TelegramSender.sendVideoAsync(this, videoFile, caption)
-        DriveBackupManager.backupAsync(this, videoFile)
     }
 
     override fun onDestroy() {

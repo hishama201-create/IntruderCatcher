@@ -44,10 +44,10 @@ android {
         // minSdk 24 = Android 7.0 (Nougat) — حسب طلبك: يغطي من أندرويد 7 إلى 15
         minSdk 24
         targetSdk 35
-        // عند كل تعديل جديد على المشروع، زد versionCode 38بمقدار 1 وحدّث
+        // عند كل تعديل جديد على المشروع، زد versionCode 39بمقدار 1 وحدّث
         // versionName بنفس الرقم (V8, V9 ...)
-        versionCode 38
-        versionName "V38"
+        versionCode 39
+        versionName "V39"
     }
 
     buildTypes {
@@ -98,6 +98,4 @@ dependencies {
     // نافذة النظام الرسمية لمصادقة البصمة/الوجه
     implementation "androidx.biometric:biometric:1.1.0"
 
-    // V28: تسجيل دخول Google لربط ورفع نسخة احتياطية مشفّرة على Google Drive
-    implementation "com.google.android.gms:play-services-auth:20.7.0"
 }
