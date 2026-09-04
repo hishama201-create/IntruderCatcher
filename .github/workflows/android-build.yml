@@ -44,6 +44,12 @@ jobs:
             echo "KEY_ALIAS=$RELEASE_KEY_ALIAS"
             echo "KEY_PASSWORD=$RELEASE_KEY_PASSWORD"
           } > app/keystore-release/keystore.properties
+          echo "=== تشخيص ==="
+          echo "طول سر Base64: ${#RELEASE_KEYSTORE_BASE64} حرف"
+          echo "طول كلمة مرور Store: ${#RELEASE_STORE_PASSWORD} حرف"
+          echo "طول Alias: ${#RELEASE_KEY_ALIAS} حرف"
+          echo "حجم ملف release.keystore: $(wc -c < app/keystore-release/release.keystore) بايت"
+          file app/keystore-release/release.keystore
 
       - name: Verify release keystore is valid
         env:
@@ -53,8 +59,7 @@ jobs:
           keytool -list -v \
             -keystore app/keystore-release/release.keystore \
             -alias "$RELEASE_KEY_ALIAS" \
-            -storepass "$RELEASE_STORE_PASSWORD" \
-            | grep -E "SHA1:|Alias name"
+            -storepass "$RELEASE_STORE_PASSWORD"
 
       - name: Build release APK
         run: gradle assembleRelease --stacktrace
