@@ -13,7 +13,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- الأيقونة الرئيسية العلوية -->
         <ImageView
             android:id="@+id/ivHeaderIcon"
             android:layout_width="120dp"
@@ -29,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
+            android:gravity="center"
             android:text="جاهز — التطبيق يراقب الآن محاولات فتح القفل الخاطئة"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
@@ -42,7 +42,7 @@
             android:weightSum="3">
 
             <include
-                id="@+id/btnCamera"
+                id="@+id/btnGrantCamera"
                 layout="@layout/item_grid_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                 android:layout_weight="1" />
 
             <include
-                id="@+id/btnAdmin"
+                id="@+id/btnGrantAdmin"
                 layout="@layout/item_grid_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 android:layout_weight="1" />
 
             <include
-                id="@+id/btnGallery"
+                id="@+id/btnViewGallery"
                 layout="@layout/item_grid_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 android:layout_weight="1" />
 
             <include
-                id="@+id/btnBackup"
+                id="@+id/btnAutoBackup"
                 layout="@layout/item_grid_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

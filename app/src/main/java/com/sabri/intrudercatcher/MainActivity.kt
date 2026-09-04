@@ -13,47 +13,42 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupGridButtons()
+        setupGridUI()
     }
 
-    private fun setupGridButtons() {
-        // 1. زر منح صلاحية الكاميرا
-        val btnCamera = findViewById<View>(R.id.btnCamera)
-        btnCamera.findViewById<ImageView>(R.id.imgIcon).setImageResource(R.drawable.ic_grid_camera)
-        btnCamera.findViewById<TextView>(R.id.txtTitle).setText(R.string.grant_camera)
-        btnCamera.setOnClickListener {
-            // أضف إجرائية الكاميرا هنا أو استدعاء الأذونات
+    private fun setupGridUI() {
+        val btnCamera = findViewById<View>(R.id.btnGrantCamera)
+        btnCamera?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_camera)
+        btnCamera?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.grant_camera)
+        btnCamera?.setOnClickListener {
+            // إضافة الإجراء الخاص بالكاميرا
         }
 
-        // 2. زر تفعيل مدير الجهاز
-        val btnAdmin = findViewById<View>(R.id.btnAdmin)
-        btnAdmin.findViewById<ImageView>(R.id.imgIcon).setImageResource(R.drawable.ic_grid_shield)
-        btnAdmin.findViewById<TextView>(R.id.txtTitle).setText(R.string.grant_admin)
-        btnAdmin.setOnClickListener {
-            // أضف إجرائية مدير الجهاز
+        val btnAdmin = findViewById<View>(R.id.btnGrantAdmin)
+        btnAdmin?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_shield)
+        btnAdmin?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.grant_admin)
+        btnAdmin?.setOnClickListener {
+            // إضافة الإجراء الخاص بمدير الجهاز
         }
 
-        // 3. زر عرض الصور الملتقطة
-        val btnGallery = findViewById<View>(R.id.btnGallery)
-        btnGallery.findViewById<ImageView>(R.id.imgIcon).setImageResource(R.drawable.ic_grid_gallery)
-        btnGallery.findViewById<TextView>(R.id.txtTitle).setText(R.string.view_gallery)
-        btnGallery.setOnClickListener {
+        val btnGallery = findViewById<View>(R.id.btnViewGallery)
+        btnGallery?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_gallery)
+        btnGallery?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.view_gallery)
+        btnGallery?.setOnClickListener {
             startActivity(Intent(this, GalleryActivity::class.java))
         }
 
-        // 4. زر الانتقال إلى قفل التطبيقات
         val btnAppLock = findViewById<View>(R.id.btnAppLock)
-        btnAppLock.findViewById<ImageView>(R.id.imgIcon).setImageResource(R.drawable.ic_grid_lock)
-        btnAppLock.findViewById<TextView>(R.id.txtTitle).setText(R.string.applock_open_feature)
-        btnAppLock.setOnClickListener {
+        btnAppLock?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_lock)
+        btnAppLock?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.applock_open_feature)
+        btnAppLock?.setOnClickListener {
             startActivity(Intent(this, AppSelectionActivity::class.java))
         }
 
-        // 5. زر النسخ الاحتياطي
-        val btnBackup = findViewById<View>(R.id.btnBackup)
-        btnBackup.findViewById<ImageView>(R.id.imgIcon).setImageResource(R.drawable.ic_grid_backup)
-        btnBackup.findViewById<TextView>(R.id.txtTitle).setText(R.string.auto_backup_title)
-        btnBackup.setOnClickListener {
+        val btnBackup = findViewById<View>(R.id.btnAutoBackup)
+        btnBackup?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_backup)
+        btnBackup?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.auto_backup_title)
+        btnBackup?.setOnClickListener {
             startActivity(Intent(this, BackupSettingsActivity::class.java))
         }
     }
