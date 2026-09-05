@@ -211,37 +211,44 @@
                         android:text="@string/backup_settings_title"
                         android:textColor="#FFFFFF"
                         android:textSize="12sp"
-                        android:textStyle="bold
-cat > app/src/main/java/com/sabri/intrudercatcher/MainActivity.kt << 'EOF'
-package com.sabri.intrudercatcher
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAttemptLog"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#2A1B4E"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_grid_history"
+                        app:tint="#FFFFFF" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/attempt_log_title"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        findViewById<android.view.View>(R.id.cardGrantCamera)?.setOnClickListener {
-            // إضافة الإجراء الخاص بالكاميرا
-        }
-        findViewById<android.view.View>(R.id.cardGrantAdmin)?.setOnClickListener {
-            // إضافة الإجراء الخاص بمدير الجهاز
-        }
-        findViewById<android.view.View>(R.id.cardViewGallery)?.setOnClickListener {
-            startActivity(Intent(this, GalleryActivity::class.java))
-        }
-        findViewById<android.view.View>(R.id.cardAppLock)?.setOnClickListener {
-            startActivity(Intent(this, AppSelectionActivity::class.java))
-        }
-        findViewById<android.view.View>(R.id.cardAutoBackup)?.setOnClickListener {
-            startActivity(Intent(this, BackupSettingsActivity::class.java))
-        }
-        findViewById<android.view.View>(R.id.cardAttemptLog)?.setOnClickListener {
-            startActivity(Intent(this, AttemptLogActivity::class.java))
-        }
-    }
-}
+    </LinearLayout>
+</ScrollView>
