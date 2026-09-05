@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         setupGridUI()
     }
 
@@ -20,16 +19,12 @@ class MainActivity : AppCompatActivity() {
         val btnCamera = findViewById<View>(R.id.btnGrantCamera)
         btnCamera?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_camera)
         btnCamera?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.grant_camera)
-        btnCamera?.setOnClickListener {
-            // إضافة الإجراء الخاص بالكاميرا
-        }
+        btnCamera?.setOnClickListener { }
 
         val btnAdmin = findViewById<View>(R.id.btnGrantAdmin)
         btnAdmin?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_shield)
         btnAdmin?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.grant_admin)
-        btnAdmin?.setOnClickListener {
-            // إضافة الإجراء الخاص بمدير الجهاز
-        }
+        btnAdmin?.setOnClickListener { }
 
         val btnGallery = findViewById<View>(R.id.btnViewGallery)
         btnGallery?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_gallery)
@@ -47,12 +42,11 @@ class MainActivity : AppCompatActivity() {
 
         val btnBackup = findViewById<View>(R.id.btnAutoBackup)
         btnBackup?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_backup)
-        btnBackup?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.auto_backup_title)
+        btnBackup?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.backup_settings_title)
         btnBackup?.setOnClickListener {
             startActivity(Intent(this, BackupSettingsActivity::class.java))
         }
 
-        // V42: زر سادس لموازنة الشبكة (3+3) - وصول سريع لسجل محاولات الفتح
         val btnAttemptLog = findViewById<View>(R.id.btnAttemptLog)
         btnAttemptLog?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_history)
         btnAttemptLog?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.attempt_log_title)
