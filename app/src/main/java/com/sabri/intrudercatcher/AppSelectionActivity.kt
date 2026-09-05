@@ -106,7 +106,6 @@ class AppSelectionActivity : AppCompatActivity() {
         if (::devicePolicyManager.isInitialized) {
             refreshAdminProtectionStatus()
         }
-    }
         checkAndRequestLockPermissions()
     }
 
