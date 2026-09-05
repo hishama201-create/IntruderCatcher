@@ -107,6 +107,45 @@ class AppSelectionActivity : AppCompatActivity() {
             refreshAdminProtectionStatus()
         }
     }
+        checkAndRequestLockPermissions()
+    }
+
+    private fun checkAndRequestLockPermissions() {
+        if (!AppLockPermissions.hasUsageAccess(this)) {
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.permission_usage_access_title))
+                .setMessage(getString(R.string.permission_usage_access_desc))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.permission_open_settings)) { _, _ ->
+                    AppLockPermissions.requestUsageAccess(this)
+                }
+                .setNegativeButton(getString(R.string.permission_later), null)
+                .show()
+            return
+        }
+        if (!AppLockPermissions.hasOverlayPermission(this)) {
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.permission_overlay_title))
+                .setMessage(getString(R.string.permission_overlay_desc))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.permission_open_settings)) { _, _ ->
+                    AppLockPermissions.requestOverlayPermission(this)
+                }
+                .setNegativeButton(getString(R.string.permission_later), null)
+                .show()
+            return
+        }
+        if (!AppLockPermissions.hasIgnoreBatteryOptimizations(this)) {
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.permission_battery_title))
+                .setMessage(getString(R.string.permission_battery_desc))
+                .setPositiveButton(getString(R.string.permission_open_settings)) { _, _ ->
+                    AppLockPermissions.requestIgnoreBatteryOptimizations(this)
+                }
+                .setNegativeButton(getString(R.string.permission_later), null)
+                .show()
+        }
+    }
 
     // ===================== V14: شريط البحث القابل للطي =====================
 

@@ -169,4 +169,17 @@
     <string name="guide_open_userinfobot">فتح userinfobot</string>
     <string name="guide_step5_title">الصق التوكن و Chat ID واحفظ</string>
     <string name="guide_step5_desc">ارجع للخانتين فوق، الصق القيمتين، فعّل المفتاح، واضغط حفظ</string>
+    <string name="grant_camera_done">✓ الكاميرا مفعّلة</string>
+    <string name="grant_admin_done">✓ المدير مفعّل</string>
+    <string name="camera_permission_denied">تم رفض صلاحية الكاميرا - افتحها يدويًا من إعدادات التطبيق إذا رفضتها نهائيًا</string>
+    <string name="admin_add_explanation">يحتاج التطبيق هذه الصلاحية لرصد محاولات فتح القفل الخاطئة والتقاط صورة فورية، ولمنع حذف التطبيق بسهولة إذا سُرق الجهاز</string>
+    <string name="admin_activation_failed">تعذّر تفعيل صلاحية مدير الجهاز</string>
+    <string name="permission_usage_access_title">صلاحية "الوصول لسجل الاستخدام" مطلوبة</string>
+    <string name="permission_usage_access_desc">بدون هذي الصلاحية، التطبيق لا يقدر يعرف أي تطبيق مفتوح حاليًا على شاشتك، وميزة قفل التطبيقات لن تعمل إطلاقًا. بالشاشة التالية، ابحث عن "App Lock" وفعّل الصلاحية له</string>
+    <string name="permission_overlay_title">صلاحية "الظهور فوق التطبيقات الأخرى" مطلوبة</string>
+    <string name="permission_overlay_desc">بدون هذي الصلاحية، التطبيق لا يقدر يعرض شاشة القفل فوق التطبيق المطلوب حمايته. فعّلها بالشاشة التالية</string>
+    <string name="permission_battery_title">استثناء من توفير البطارية (مهم)</string>
+    <string name="permission_battery_desc">بعض الشركات (Xiaomi/MIUI, Huawei, Oppo) توقف خدمة المراقبة تلقائيًا بالخلفية لتوفير البطارية. استثنِ التطبيق من هذا القيد ليستمر عمل القفل حتى بعد إغلاق الشاشة لفترة طويلة</string>
+    <string name="permission_open_settings">فتح الإعدادات</string>
+    <string name="permission_later">لاحقًا</string>
 </resources>
