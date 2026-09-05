@@ -44,10 +44,10 @@ android {
         // minSdk 24 = Android 7.0 (Nougat) — حسب طلبك: يغطي من أندرويد 7 إلى 15
         minSdk 24
         targetSdk 35
-        // عند كل تعديل جديد على المشروع، زد versionCode 41بمقدار 1 وحدّث
+        // عند كل تعديل جديد على المشروع، زد versionCode 42بمقدار 1 وحدّث
         // versionName بنفس الرقم (V8, V9 ...)
-        versionCode 41
-        versionName "V41"
+        versionCode 42
+        versionName "V42"
     }
 
     buildTypes {

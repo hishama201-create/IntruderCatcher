@@ -51,5 +51,13 @@ class MainActivity : AppCompatActivity() {
         btnBackup?.setOnClickListener {
             startActivity(Intent(this, BackupSettingsActivity::class.java))
         }
+
+        // V42: زر سادس لموازنة الشبكة (3+3) - وصول سريع لسجل محاولات الفتح
+        val btnAttemptLog = findViewById<View>(R.id.btnAttemptLog)
+        btnAttemptLog?.findViewById<ImageView>(R.id.imgIcon)?.setImageResource(R.drawable.ic_grid_history)
+        btnAttemptLog?.findViewById<TextView>(R.id.txtTitle)?.setText(R.string.attempt_log_title)
+        btnAttemptLog?.setOnClickListener {
+            startActivity(Intent(this, AttemptLogActivity::class.java))
+        }
     }
 }
