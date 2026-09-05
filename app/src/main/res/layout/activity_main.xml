@@ -14,7 +14,6 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/ivHeaderIcon"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginTop="24dp"
@@ -23,7 +22,6 @@
             android:src="@drawable/ic_launcher_fingerprint" />
 
         <TextView
-            android:id="@+id/tvStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -40,62 +38,210 @@
             android:orientation="horizontal"
             android:weightSum="3">
 
-            <include
-                id="@+id/btnGrantCamera"
-                layout="@layout/item_grid_card"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardGrantCamera"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
                 android:layout_margin="4dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#2A1B4E"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_grid_camera"
+                        app:tint="#FFFFFF" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/grant_camera"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            <include
-                id="@+id/btnGrantAdmin"
-                layout="@layout/item_grid_card"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardGrantAdmin"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
                 android:layout_margin="4dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#2A1B4E"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_grid_shield"
+                        app:tint="#FFFFFF" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/grant_admin"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            <include
-                id="@+id/btnViewGallery"
-                layout="@layout/item_grid_card"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewGallery"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
                 android:layout_margin="4dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#2A1B4E"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_grid_gallery"
+                        app:tint="#FFFFFF" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/view_gallery"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="3">
 
-            <include
-                id="@+id/btnAppLock"
-                layout="@layout/item_grid_card"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAppLock"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
                 android:layout_margin="4dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#2A1B4E"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_grid_lock"
+                        app:tint="#FFFFFF" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/applock_open_feature"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            <include
-                id="@+id/btnAutoBackup"
-                layout="@layout/item_grid_card"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAutoBackup"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
                 android:layout_margin="4dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#2A1B4E"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_grid_backup"
+                        app:tint="#FFFFFF" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/backup_settings_title"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold
+cat > app/src/main/java/com/sabri/intrudercatcher/MainActivity.kt << 'EOF'
+package com.sabri.intrudercatcher
 
-            <include
-                id="@+id/btnAttemptLog"
-                layout="@layout/item_grid_card"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1" />
-        </LinearLayout>
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
-    </LinearLayout>
-</ScrollView>
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        findViewById<android.view.View>(R.id.cardGrantCamera)?.setOnClickListener {
+            // إضافة الإجراء الخاص بالكاميرا
+        }
+        findViewById<android.view.View>(R.id.cardGrantAdmin)?.setOnClickListener {
+            // إضافة الإجراء الخاص بمدير الجهاز
+        }
+        findViewById<android.view.View>(R.id.cardViewGallery)?.setOnClickListener {
+            startActivity(Intent(this, GalleryActivity::class.java))
+        }
+        findViewById<android.view.View>(R.id.cardAppLock)?.setOnClickListener {
+            startActivity(Intent(this, AppSelectionActivity::class.java))
+        }
+        findViewById<android.view.View>(R.id.cardAutoBackup)?.setOnClickListener {
+            startActivity(Intent(this, BackupSettingsActivity::class.java))
+        }
+        findViewById<android.view.View>(R.id.cardAttemptLog)?.setOnClickListener {
+            startActivity(Intent(this, AttemptLogActivity::class.java))
+        }
+    }
+}
