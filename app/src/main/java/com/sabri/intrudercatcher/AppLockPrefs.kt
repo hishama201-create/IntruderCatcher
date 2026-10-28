@@ -123,6 +123,16 @@ object AppLockPrefs {
         prefs(context).edit().putInt(KEY_RELOCK_MINUTES_PREFIX + packageName, minutes).apply()
     }
 
+    /** V50: مسح الإعدادات الخاصة بكل تطبيق ليطبَّق الإعداد الافتراضي على الجميع */
+    fun clearAllAppRelockOverrides(context: Context) {
+        val p = prefs(context)
+        val editor = p.edit()
+        p.all.keys
+            .filter { it.startsWith(KEY_RELOCK_MODE_PREFIX) || it.startsWith(KEY_RELOCK_MINUTES_PREFIX) }
+            .forEach { editor.remove(it) }
+        editor.apply()
+    }
+
     /** V13: الإعداد العام الافتراضي (تبويب الإعدادات) - على الفور ما لم يُغيَّر */
     fun getDefaultRelockMode(context: Context): String =
         prefs(context).getString(KEY_DEFAULT_RELOCK_MODE, RELOCK_IMMEDIATE) ?: RELOCK_IMMEDIATE

@@ -428,6 +428,7 @@ class AppSelectionActivity : AppCompatActivity() {
             } else {
                 AppLockPrefs.setDefaultRelockMode(this, mode)
                 AppLockPrefs.setDefaultRelockMinutes(this, minutes)
+                AppLockPrefs.clearAllAppRelockOverrides(this)
                 updateDefaultRelockSummary()
             }
             dialog.dismiss()
