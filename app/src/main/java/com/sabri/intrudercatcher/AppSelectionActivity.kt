@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.SeekBar
 import android.widget.Switch
 import android.widget.TextView
@@ -350,7 +349,6 @@ class AppSelectionActivity : AppCompatActivity() {
      */
     private fun showRelockSettingsDialog(targetPackage: String?) {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_relock_settings, null)
-        val radioGroup = view.findViewById<RadioGroup>(R.id.radioRelockMode)
         val radioImmediate = view.findViewById<RadioButton>(R.id.radioImmediate)
         val radioScreenOff = view.findViewById<RadioButton>(R.id.radioScreenOff)
         val radioAfterMinutes = view.findViewById<RadioButton>(R.id.radioAfterMinutes)
@@ -370,11 +368,27 @@ class AppSelectionActivity : AppCompatActivity() {
             AppLockPrefs.getDefaultRelockMinutes(this)
         }
 
-        when (currentMode) {
-            AppLockPrefs.RELOCK_SCREEN_OFF -> radioScreenOff.isChecked = true
-            AppLockPrefs.RELOCK_AFTER_MINUTES -> radioAfterMinutes.isChecked = true
-            else -> radioImmediate.isChecked = true
+        // V47: إدارة الاختيار يدويًا (زر بعد N دقيقة داخل حاوية فرعية فلا يديره RadioGroup)
+        var selectedMode = when (currentMode) {
+            AppLockPrefs.RELOCK_SCREEN_OFF -> AppLockPrefs.RELOCK_SCREEN_OFF
+            AppLockPrefs.RELOCK_AFTER_MINUTES -> AppLockPrefs.RELOCK_AFTER_MINUTES
+            else -> AppLockPrefs.RELOCK_IMMEDIATE
         }
+        val radios = listOf(
+            radioImmediate to AppLockPrefs.RELOCK_IMMEDIATE,
+            radioScreenOff to AppLockPrefs.RELOCK_SCREEN_OFF,
+            radioAfterMinutes to AppLockPrefs.RELOCK_AFTER_MINUTES
+        )
+        val refreshRadios = {
+            radios.forEach { (rb, m) -> rb.isChecked = (m == selectedMode) }
+        }
+        radios.forEach { (rb, m) ->
+            rb.setOnClickListener {
+                selectedMode = m
+                refreshRadios()
+            }
+        }
+        refreshRadios()
         // السلايدر يبدأ من دقيقة واحدة (progress 0 = دقيقة 1)
         seekMinutes.progress = (currentMinutes - 1).coerceIn(0, 59)
         tvMinutesValue.text = currentMinutes.toString()
@@ -382,7 +396,10 @@ class AppSelectionActivity : AppCompatActivity() {
         seekMinutes.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 tvMinutesValue.text = (progress + 1).toString()
-                if (fromUser) radioAfterMinutes.isChecked = true
+                if (fromUser) {
+                    selectedMode = AppLockPrefs.RELOCK_AFTER_MINUTES
+                    refreshRadios()
+                }
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
@@ -393,11 +410,7 @@ class AppSelectionActivity : AppCompatActivity() {
             .create()
 
         btnOk.setOnClickListener {
-            val mode = when (radioGroup.checkedRadioButtonId) {
-                R.id.radioScreenOff -> AppLockPrefs.RELOCK_SCREEN_OFF
-                R.id.radioAfterMinutes -> AppLockPrefs.RELOCK_AFTER_MINUTES
-                else -> AppLockPrefs.RELOCK_IMMEDIATE
-            }
+            val mode = selectedMode
             val minutes = seekMinutes.progress + 1
             if (targetPackage != null) {
                 AppLockPrefs.setRelockMode(this, targetPackage, mode)

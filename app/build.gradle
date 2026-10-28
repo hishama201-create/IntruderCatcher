@@ -46,8 +46,8 @@ android {
         targetSdk 35
         // عند كل تعديل جديد على المشروع، زد versionCode 46بمقدار 1 وحدّث
         // versionName بنفس الرقم (V8, V9 ...)
-        versionCode 46
-        versionName "V46"
+        versionCode 47
+        versionName "V47"
     }
 
     buildTypes {

@@ -15,8 +15,9 @@
         android:textStyle="bold"
         android:layout_marginBottom="16dp" />
 
-    <RadioGroup
+    <LinearLayout
         android:id="@+id/radioRelockMode"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -81,7 +82,7 @@
 
         </LinearLayout>
 
-    </RadioGroup>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
