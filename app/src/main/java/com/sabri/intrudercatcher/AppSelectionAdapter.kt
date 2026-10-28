@@ -15,12 +15,27 @@ import androidx.recyclerview.widget.RecyclerView
  * دائمًا، وfilter() بس بتغيّر القائمة المعروضة بدون فقدان أي بيانات.
  */
 class AppSelectionAdapter(
-    private val fullApps: List<LockableApp>,
+    private var fullApps: List<LockableApp>,
     private val onLockIconClick: (LockableApp) -> Unit,
     private val onSettingsClick: (LockableApp) -> Unit
 ) : RecyclerView.Adapter<AppSelectionAdapter.ViewHolder>() {
 
     private var displayedApps: List<LockableApp> = fullApps
+    private var currentQuery: String = ""
+
+    // V48: تحميل الأيقونات كسولًا مع ذاكرة مؤقتة
+    private val iconCache = android.util.LruCache<String, android.graphics.drawable.Drawable>(300)
+    private val iconExecutor = java.util.concurrent.ThreadPoolExecutor(
+        2, 2, 3, java.util.concurrent.TimeUnit.SECONDS,
+        java.util.concurrent.LinkedBlockingQueue<Runnable>()
+    ).apply { allowCoreThreadTimeOut(true) }
+    private val mainHandler = android.os.Handler(android.os.Looper.getMainLooper())
+
+    /** V48: يستبدل القائمة بعد انتهاء التحميل الخلفي مع الحفاظ على نص البحث الحالي */
+    fun setApps(apps: List<LockableApp>) {
+        fullApps = apps
+        filter(currentQuery)
+    }
 
     class ViewHolder(view: android.view.View) : RecyclerView.ViewHolder(view) {
         val icon: ImageView = view.findViewById(R.id.ivAppIcon)
@@ -37,7 +52,24 @@ class AppSelectionAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val app = displayedApps[position]
-        holder.icon.setImageDrawable(app.icon)
+        val pkg = app.packageName
+        holder.icon.tag = pkg
+        val cachedIcon = iconCache.get(pkg)
+        if (cachedIcon != null) {
+            holder.icon.setImageDrawable(cachedIcon)
+        } else {
+            holder.icon.setImageDrawable(null)
+            val pm = holder.itemView.context.packageManager
+            iconExecutor.execute {
+                val d = try { pm.getApplicationIcon(pkg) } catch (e: Exception) { null }
+                if (d != null) {
+                    iconCache.put(pkg, d)
+                    mainHandler.post {
+                        if (holder.icon.tag == pkg) holder.icon.setImageDrawable(d)
+                    }
+                }
+            }
+        }
         holder.label.text = app.label
         holder.lockToggle.setImageResource(
             if (app.locked) R.drawable.ic_lock_closed else R.drawable.ic_lock_open
@@ -61,6 +93,7 @@ class AppSelectionAdapter(
 
     /** V14: فلترة القائمة المعروضة بالاسم - القائمة الأصلية الكاملة تفضل محفوظة دائمًا */
     fun filter(query: String) {
+        currentQuery = query
         displayedApps = if (query.isBlank()) {
             fullApps
         } else {

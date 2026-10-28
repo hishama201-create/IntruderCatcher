@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 data class LockableApp(
     val packageName: String,
     val label: String,
-    val icon: android.graphics.drawable.Drawable,
+    val icon: android.graphics.drawable.Drawable? = null,
     var locked: Boolean
 )
 
@@ -78,21 +78,31 @@ class AppSelectionActivity : AppCompatActivity() {
         setupChangeLockCodeRow()
         setupAdminProtectionRow()
 
-        val apps = try {
-            loadLaunchableApps()
-        } catch (e: Exception) {
-            Toast.makeText(this, "خطأ أثناء تحميل التطبيقات: ${e.message}", Toast.LENGTH_LONG).show()
-            emptyList()
-        }
-        Toast.makeText(this, getString(R.string.applock_apps_found_debug, apps.size), Toast.LENGTH_LONG).show()
-
         adapter = AppSelectionAdapter(
-            fullApps = apps,
+            fullApps = emptyList(),
             onLockIconClick = { app -> onLockIconClicked(app) },
             onSettingsClick = { app -> showRelockSettingsDialog(app.packageName) }
         )
         recyclerView.adapter = adapter
         setupSearchBar()
+
+        // V48: تحميل التطبيقات في خيط خلفي حتى تظهر الشاشة فورًا
+        Thread {
+            val apps = try {
+                loadLaunchableApps()
+            } catch (e: Exception) {
+                runOnUiThread {
+                    Toast.makeText(this, "خطأ أثناء تحميل التطبيقات: ${e.message}", Toast.LENGTH_LONG).show()
+                }
+                emptyList()
+            }
+            runOnUiThread {
+                if (!isFinishing && !isDestroyed) {
+                    adapter.setApps(apps)
+                    Toast.makeText(this, getString(R.string.applock_apps_found_debug, apps.size), Toast.LENGTH_LONG).show()
+                }
+            }
+        }.start()
 
         // يُستدعى أخيرًا حتى ما ينلغيش بألوان التبويبات الثابتة اللي بيحطها setupTabs()
         applyTheme()
@@ -633,7 +643,6 @@ class AppSelectionActivity : AppCompatActivity() {
                     LockableApp(
                         packageName = appInfo.packageName,
                         label = pm.getApplicationLabel(appInfo).toString(),
-                        icon = pm.getApplicationIcon(appInfo),
                         locked = lockedSet.contains(appInfo.packageName)
                     )
                 } catch (e: Exception) {
